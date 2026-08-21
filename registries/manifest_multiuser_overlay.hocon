@@ -1,0 +1,73 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+{
+    # This manifest file lists agent networks that we do *not* want to serve up
+    # in a multi-user deployment.  The idea is that the main manifest.hocon is
+    # what most developers will want to use in their nora_flow-based dev environments,
+    # and that one grows organically as we add new agent networks.
+    #
+    # However, every once in a while someone develops an agent network that does not scale up
+    # well to a multi-user deployment just yet, so we add those here as they arise until
+    # they are ready to be included in the main manifest.
+    #
+    # Most often these special networks are put together with a bent towards the client having
+    # knowledge of specific server details, which is fine for a single-developer setup,
+    # but a big no-no for a multi-user setup. Properties of these special networks
+    # include but are not limited to:
+    #
+    #   1. Knowledge or modification of the server's local filesystem.
+    #   2. Have specific external account settings that are not generally available.
+    #   3. Makes use of tools that execute external processes via shell commands.
+    #   4. Requires use of external services not readily deployed by the average bear
+    #      (like databases)
+    #   5. Have-a or is-a dependency on a particular agent network that has one of the above issues.
+    #   6. Developer-facing example of specific HOCON features/patterns (not an end-user demo).
+    #   7. Requires per-user authentication credentials (e.g. OAuth bearer token or API key)
+    #
+    # To use this file, we simply add a reference to it at the end of our existing
+    # AGENT_MANIFEST_FILE specification # like this:
+    #
+    #    export AGENT_MANIFEST_FILE="registries/manifest.hocon registries/manifest_multiuser_overlay.hocon"
+    #
+    # Basically the data for later manifest files gets overlayed on top of earlier ones.
+
+    # Basic examples
+    "basic/book_recommender_multiple_llm_configs.hocon": false,  # Reason #6
+    "basic/internal_communication_skill.hocon": false,           # Reason #6
+    "basic/job_guessing_skill.hocon": false,                     # Reason #6
+    "basic/music_nerd_llm_fallbacks.hocon": false,               # Reason #6
+    "basic/music_nerd_local.hocon": false,                       # Reason #4
+    "basic/music_nerd_pro_local.hocon": false,                   # Reason #4
+    "basic/music_nerd_pro_sly.hocon": false,                     # Reason #6
+    "basic/music_nerd_pro_sly_local.hocon": false,               # Reason #4
+
+    # Tools
+    "tools/agent_network_html_creator.hocon": false,    # Reason #3
+    "tools/agentforce.hocon": false,                    # Reason #2
+    "tools/openai_image_generation.hocon": false,       # Reason #1
+    "tools/persistent_memory_local.hocon": false,       # Reason #1
+    "tools/google_workspace.hocon": false,              # Reason #7
+    "tools/you_search.hocon": false,                    # Reason #7
+
+    # Experimental and research
+    "agent_network_designer.hocon": true,               # Reason #1. Needs AGENT_NETWORK_DESIGNER_USE_RESERVATIONS=true
+
+    # Demos
+
+    "tools/now_agents.hocon": false,                    # Reason #2
+    "experimental/cruse_theme_agent.hocon": {
+        "serve": false,                                 # Reason #1
+        "public": false
+    },
+    "experimental/cruse_widget_agent.hocon": {
+        "serve": false,                                 # Reason #1
+        "public": false
+    },
+
+    # Agent network test generator
+    "agent_network_test_generator.hocon": false,        # Reason #1
+}

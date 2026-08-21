@@ -1,0 +1,55 @@
+
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+
+# This file defines everything necessary for a data-driven test.
+# The schema specifications for this file are documented here:
+# https://github.com/nvsinha/nora-fleet/blob/main/docs/test_case_hocon_reference.md
+
+{
+    # Describes what agent to test against.
+    "agent": "industry/airline_policy",
+
+    # success_ratio is useful for passing to the assessor to find out why
+    # a test is intermitently failing. Sometimes it's the agent prompt, but
+    # sometimes it's the test itself.
+    # Note: This number was set to 1/1 for regression testing.
+    "success_ratio": "1/1",
+
+    # Interactions are a series of dictionaries with request elements paired with
+    # descriptions of response checks.
+    "interactions": [
+        {
+            # This is to enable streaming_chat contents to thinking file for debug.
+            # "chat_filter": "MAXIMAL",
+
+            # Timeout for the entire test.
+            # It's also possible to have a timeout_in_seconds on a per-interaction basis.
+            "timeout_in_seconds": 180,
+            
+            # This is what we send as input to streaming_chat()
+            "text": """
+What size does my personal item need to be to fly for free?
+""",
+
+            # The response block treats how we are going to test what comes back
+            "response": {
+
+                # Text block says how we are going to examine the text of the response.
+                "text": {
+
+                    # Gist says we are going to ask an LLM about how the response
+                    # matches up to our description of acceptance criteria.
+                    # Each component of the list needs to pass muster in order to pass.
+                    "gist": ["""
+Confirms that a personal item must be no larger than 9 × 10 × 17 inches (22 × 25 × 43 cm).
+                             """]
+                }
+            }
+        }
+    ]
+}

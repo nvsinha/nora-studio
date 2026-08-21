@@ -1,0 +1,38 @@
+# Provenance guard term list.
+#
+# Any of these appearing in the working tree or git history fails the build.
+# Matching is case-insensitive substring.
+#
+# Note: "leaf" alone is NOT banned -- it is ordinary graph terminology
+# ("leaf nodes", "leaf agents"). Only the package names are.
+
+cognizant
+cognizant-ai-lab
+Cognizant Technology Solutions
+Cognizant Digital Business
+www.cognizant.com
+labgithub
+CAILPyPi
+neuro
+neuro-san
+neuro_san
+neurosan
+NeuroSan
+NeuroSAN
+nsflow
+NSFLOW
+NSFlow
+leaf-common
+leaf_common
+leaf-ai
+Daniel.Fink
+Dan Fink
+dev.cognizant_ai
+ui-common
+Apache License
+apache.org/licenses
+build-common
+Checkmarx
+neuro-san-deploy
+decision-ai
+evolutionmlmail

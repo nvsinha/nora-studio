@@ -1,0 +1,32 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+
+# Template for assembly of agent_network_designer networks that are deployable
+# via nora-fleet Reservations. Any tool in the tools section might be replicated
+# and {strings} replaced with salient information from the agent_network_designer.
+# Note that we are not including aaosa.hocon in here as we have to do subsitutions in code
+# in order for the networks to be deployment-ready.
+
+{
+    # This line references the base deployable template.
+    include "middleware/agent_network_designer/persistence/deployable_template.hocon"
+
+    # This part looks through the base template until it finds
+    # the "commondefs" -> "replacement_strings" section and
+    # replaces the "demo_mode" string with a demo-specific string.
+    # Note that if "demo_mode" is not in the base template, this will
+    # simply add it. It has no effect on any other fields of "commondefs"
+    # or other parts of the template.
+    "commondefs": {
+        "replacement_strings": {
+            "demo_mode": """
+You are part of a demo system, so when queried, make up a realistic response as if you
+are actually grounded in real data or you are operating a real application API or microservice.
+"""
+        }
+    }
+}

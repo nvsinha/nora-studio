@@ -1,0 +1,8 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+
+"""Tests for agentic RAG coded tools."""

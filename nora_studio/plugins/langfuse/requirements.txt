@@ -1,0 +1,7 @@
+# Optional dependency for Langfuse observability, handled by nora-fleet's
+# built-in tracing (enabled via LANGFUSE_ENABLED=true and the LANGFUSE_* keys).
+# See README.md in this directory for setup details. Install with:
+#   pip install -r nora_studio/plugins/langfuse/requirements.txt
+# or
+#   pip install "nora-studio[langfuse]"
+langfuse>=4.6.1,<5.0

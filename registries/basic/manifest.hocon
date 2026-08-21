@@ -1,0 +1,33 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+{
+    # Refer to this document for nora-fleet specifications for the agent manifest.hocon file 
+    # that is used as configuration for nora-fleet servers
+    # https://github.com/nvsinha/nora-fleet/blob/main/docs/manifest_hocon_reference.md
+
+    #
+    # Basic examples
+    #
+    "basic/advanced_calculator.hocon": false,
+    "basic/book_recommender_multiple_llm_configs.hocon": true,
+    "basic/coding_assistant.hocon": true,
+    "basic/coffee_finder_advanced.hocon": true,
+    "basic/coffee_finder.hocon": true,
+    "basic/hello_world.hocon": true,
+    "basic/internal_communication_skill.hocon": true,
+    "basic/job_guessing_skill.hocon": true,
+    "basic/music_nerd.hocon": true,
+    "basic/music_nerd_llm_fallbacks.hocon": true,
+    "basic/music_nerd_local.hocon": true,
+    "basic/music_nerd_pro.hocon": true,
+    "basic/music_nerd_pro_local.hocon": true,
+    "basic/music_nerd_pro_sly.hocon": true,
+    "basic/music_nerd_pro_sly_local.hocon": true,
+    "basic/pii_middleware.hocon": true,
+    "basic/smart_home.hocon": true,
+    "basic/wolfram_mcp.hocon": true,
+}

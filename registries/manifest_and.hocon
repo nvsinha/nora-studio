@@ -1,0 +1,16 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+{
+    # This manifest file lists external agents that are available for the network designed by agent network designer.
+
+    # Industry use cases
+    include "registries/industry/manifest.hocon",
+
+    # Generated agent networks
+    include "registries/generated/manifest.hocon"
+
+}

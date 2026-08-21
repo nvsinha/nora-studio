@@ -1,0 +1,22 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+
+# Template for assembly of agent_network_designer networks that are deployable
+# via nora-fleet Reservations. Any tool in the tools section might be replicated
+# and {strings} replaced with salient information from the agent_network_designer.
+# Note that we are not including aaosa.hocon in here as we have to do subsitutions in code
+# in order for the networks to be deployment-ready.
+
+# This wrapper exists so that deployable_template.hocon is always loaded as an
+# included file (giving it file-relative include resolution by pyhocon) rather than
+# as a top-level parse_string call (which would resolve includes relative to CWD,
+# breaking the ../../../config/llm_config.hocon path inside that file).
+{
+    # The include path here is relative to CWD (repo root) because this file
+    # is loaded as the top-level file via parse_string.
+    include "middleware/agent_network_designer/persistence/deployable_template.hocon"
+}

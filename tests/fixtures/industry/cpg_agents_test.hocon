@@ -1,0 +1,39 @@
+# Copyright (c) 2026 Nishant Sinha
+#
+# Licensed under the MIT License. See LICENSE.txt in the project
+# root for full license information.
+#
+# END COPYRIGHT
+
+# Simple test case for cpg_agents network
+# Tests basic supply chain inquiry handling
+{
+    # Describes what agent to test against
+    "agent": "industry/cpg_agents",
+
+    # Connect to the agent directly (no server required for testing)
+    "connections": ["direct"],
+
+    # Timeout for the entire test (5 minutes)
+    "timeout_in_seconds": 300,
+
+    # Interactions are a series of dictionaries with request elements paired with
+    # descriptions of response checks
+    "interactions": [
+        {
+            # This is to enable streaming_chat contents to thinking file for debug.
+            # "chat_filter": "MAXIMAL",
+            
+            # Supply chain inquiry from documentation example
+            "text": "We're experiencing supply chain delays in our Southeast Asia region that are affecting our new product launch. Can you help me understand the root cause and develop a mitigation plan?",
+
+            # Test that the assistant responds by asking for more details
+            "response": {
+                "text": {
+                    # The gist test checks if the response matches the general meaning
+                    "gist": "The assistant should ask for additional details about the supply chain delays such as the specific countries or facilities affected, product line, launch date, type of delays (raw materials, manufacturing, logistics), severity of delays, or production volume targets."
+                }
+            }
+        }
+    ]
+}

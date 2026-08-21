@@ -1,0 +1,78 @@
+---
+name: Test
+
+permissions:
+  contents: read
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: Lint and test (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ['3.12', '3.13']
+
+    steps:
+      # v6.0.2
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          persist-credentials: false
+
+      # v7.0.0
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: 'pip'
+
+      # nora-common, nora-fleet and nora-flow are PRIVATE repos pulled in over
+      # https by pip. The runner has no credentials for them, so rewrite
+      # github.com URLs to carry a token. The token needs Contents:Read on all
+      # three. Remove this step once the Nora repos are public.
+      - name: Authenticate for private Nora dependencies
+        env:
+          NORA_REPOS_TOKEN: ${{ secrets.NORA_REPOS_TOKEN }}
+        run: |
+          if [ -z "$NORA_REPOS_TOKEN" ]; then
+            echo "::error::NORA_REPOS_TOKEN is not set."
+            exit 1
+          fi
+          git config --global \
+            url."https://x-access-token:${NORA_REPOS_TOKEN}@github.com/".insteadOf \
+            "https://github.com/"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt -r requirements-build.txt
+
+      # The Makefile's venv-guard requires VIRTUAL_ENV. On a runner the system
+      # Python IS the environment, so declare it rather than build a venv.
+      - name: Lint
+        env:
+          VIRTUAL_ENV: system
+        run: make lint-check
+
+      # Runs the HOCON class-path gate along with everything else. That gate is
+      # the one that catches renames which update a registry string but not the
+      # module it names -- a break nothing else in the suite would surface.
+      - name: Test
+        env:
+          VIRTUAL_ENV: system
+          PYTHONPATH: .
+          AGENT_TOOL_PATH: coded_tools/
+          AGENT_MANIFEST_FILE: registries/manifest.hocon
+        run: |
+          python -m pytest tests/ -v --cov=coded_tools --cov=nora_studio \
+            -m "not integration"

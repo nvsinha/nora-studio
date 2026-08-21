@@ -1,0 +1,52 @@
+---
+# Publishes to PyPI on a published GitHub release.
+#
+# Uses PyPI Trusted Publishing (OIDC), so no API token secret is needed --
+# but the PyPI project must first be configured to trust this repository
+# and this workflow. Until that is set up, releases will fail here, which
+# is harmless: downstream repos consume this package by git tag, not PyPI.
+
+name: Publish to PyPI
+
+permissions:
+  contents: read
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Build and publish
+    if: github.repository == 'nvsinha/nora-studio'
+    runs-on: ubuntu-latest
+    environment: pypi
+    permissions:
+      id-token: write  # Mandatory for PyPI Trusted Publishing
+
+    steps:
+      # v6.0.2
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        with:
+          # setuptools-scm derives the version from tags, so it needs them.
+          fetch-depth: 0
+          persist-credentials: false
+
+      # v7.0.0
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: '3.12'
+
+      - name: Install build tooling
+        run: |
+          python -m pip install --upgrade pip
+          pip install build
+
+      - name: Build wheel and sdist
+        run: python -m build
+
+      # v1.14.0
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@cef221092ed1bacb1cc03d23a2d87d1d172e277b
