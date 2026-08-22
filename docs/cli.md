@@ -3,7 +3,7 @@
 The `nora-studio` console script dispatches to a small set of subcommands.
 Run `nora-studio --help` for the full list and shared options.
 
-`ns` is a shorter alias for `nora-studio` — `nora run`, `nora init`, etc. work identically.
+`nora` is a shorter alias for `nora-studio` — `nora run`, `nora init`, etc. work identically.
 
 | Subcommand | Description |
 |---|---|

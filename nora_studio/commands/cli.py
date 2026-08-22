@@ -56,7 +56,7 @@ class NoraStudioCli:  # pylint: disable=too-few-public-methods
         """Nora Studio CLI."""
         # Click runs this callback before parsing the subcommand's own args, so `nora run --help`
         # would load the project .env just to render a help screen. Nothing in help output depends
-        # on the environment. (`ns --help`, bare `ns` and `ns --version` already exit before here.)
+        # on the environment. (`nora --help`, bare `nora` and `nora --version` already exit before here.)
         # sys.argv is the only source of those args: Click empties ctx.args before this runs.
         if any(arg in ctx.help_option_names for arg in sys.argv[1:]):
             return

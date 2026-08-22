@@ -252,7 +252,7 @@ class TestMainEntryPoint:
     def test_version_flag_prints_version_and_exits(
         self, flag: str, monkeypatch: MonkeyPatch, capsys: pytest.CaptureFixture[str]
     ) -> None:
-        """`ns --version` / `-V` prints the resolved version and exits without starting the server."""
+        """`nora --version` / `-V` prints the resolved version and exits without starting the server."""
         call_order = self._install_fake_runner(monkeypatch)
         monkeypatch.setattr(
             "nora_studio.utils.version.resolve_version",

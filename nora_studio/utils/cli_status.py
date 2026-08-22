@@ -5,7 +5,7 @@
 #
 # END COPYRIGHT
 
-"""Shared status-line helpers for ``ns`` CLI commands.
+"""Shared status-line helpers for ``nora`` CLI commands.
 
 The init/import/export commands all surface step-by-step progress with the same prefixed
 style — ``[ok]``, ``[skip]``, ``[warn]``, ``[err]``, ``[info]``. Centralizing the helpers
@@ -21,7 +21,7 @@ from rich.console import Console
 
 
 class CliStatus:
-    """Shared status-line printers for ``ns`` CLI commands."""
+    """Shared status-line printers for ``nora`` CLI commands."""
 
     # Class-level Console — Rich is happy to share one across writers, and the
     # printers stay cheap to call from any command module.
