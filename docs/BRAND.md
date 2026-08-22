@@ -47,13 +47,18 @@ hold contrast at 16px on an unknown background — the tile gives it one.
 
 ## Geometry
 
-A 64×64 artboard with a 44px live area. One stroke weight (6.5), two node radii
-(9 primary, 6.5 secondary), round caps and joins throughout. Edges are drawn
-first and nodes painted over them, so no line ever pokes through a dot.
+A 64×64 artboard with a 44px live area. Connectors are 3.25 (flow's single
+curve 3.5); nodes are 9 primary and 6.5 secondary. Round caps and joins
+throughout. Edges are drawn first and nodes painted over them, so no line ever
+pokes through a dot.
 
-The weights are heavier than they look like they need to be. An earlier pass
-was lighter and fell apart below 32px; tight negative space is what lets a mark
-hold together small.
+The connectors are deliberately half the node weight. The dots are the network;
+the lines only say which of them are joined, so giving both the same weight
+made the marks read as tangles rather than as graphs.
+
+That thinness is also why the tile exists. Below about 24px a 3.25 stroke on an
+unknown background stops holding contrast, and no amount of care in the mark
+fixes that — the tile gives it a ground instead.
 
 ## Where the files are
 
