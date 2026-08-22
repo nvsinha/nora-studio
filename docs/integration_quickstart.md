@@ -399,7 +399,8 @@ code. You can go through it for a better understanding.
 - Or use a different model that you have credentials for
 
 **Import errors?**
-- Make sure nora-fleet is installed: `pip install nora-fleet`
+- Make sure nora-fleet is installed. It is not on PyPI, so it comes from the
+  repository: `pip install "nora-fleet @ git+https://github.com/nvsinha/nora-fleet@v0.1.0"`
 - Check your Python environment is activated
 
 **HOCON issues?**

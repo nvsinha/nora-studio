@@ -35,10 +35,6 @@ configuration rather than code.
   <img src="https://img.shields.io/github/last-commit/nvsinha/nora-studio" alt="Last Commit">
   <img src="https://img.shields.io/github/issues/nvsinha/nora-studio" alt="Issues">
   <img src="https://img.shields.io/github/issues-pr/nvsinha/nora-studio" alt="Pull Requests">
-  <a href="https://pepy.tech/projects/nora-studio"><img alt="PyPI Downloads"
-  src="https://static.pepy.tech/badge/nora-studio" /></a>
-  <a href="https://pypi.org/project/nora-studio/">
-  <img alt="nora-studio@PyPI" src="https://img.shields.io/pypi/v/nora-studio.svg?style=flat-square"></a>
   <a href="https://deepwiki.com/nvsinha/nora-studio">
   <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki: Nora Studio" /></a>
 
@@ -51,10 +47,6 @@ configuration rather than code.
   <a href="https://github.com/nvsinha/nora-fleet"><img alt="GitHub Repo"
   src="https://img.shields.io/badge/GitHub-Repo-green.svg" /></a>
   <img src="https://img.shields.io/github/commit-activity/m/nvsinha/nora-fleet" alt="commit activity">
-  <a href="https://pepy.tech/projects/nora-fleet"><img alt="PyPI Downloads"
-  src="https://static.pepy.tech/badge/nora-fleet" /></a>
-  <a href="https://pypi.org/project/nora-fleet/">
-  <img alt="nora-fleet@PyPI" src="https://img.shields.io/pypi/v/nora-fleet.svg?style=flat-square"></a>
   <a href="https://deepwiki.com/nvsinha/nora-fleet">
   <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki: Nora Fleet" /></a>
 </p>
