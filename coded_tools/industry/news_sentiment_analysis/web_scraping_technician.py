@@ -7,6 +7,7 @@
 
 import logging
 import os
+import re
 import time
 from typing import Any
 from typing import Dict
@@ -41,6 +42,28 @@ SENSITIVE_QUERY_KEYS = {
     "password",
     "passwd",
 }
+
+# Longest first, so "access_token" wins over "token" and the redacted output
+# keeps the full key name.
+_SENSITIVE_TEXT_RE = re.compile(
+    r"(?i)(" + "|".join(re.escape(k) for k in sorted(SENSITIVE_QUERY_KEYS, key=len, reverse=True)) + r")=([^&\s'\")]+)"
+)
+
+
+def sanitize_text(text: str) -> str:
+    """
+    Redact sensitive query-parameter values anywhere they appear in free text.
+
+    sanitize_url() only helps when we control the string. Exception messages
+    from requests embed the URL that failed -- including its query string -- so
+    logging str(e) next to a sanitized URL puts the credential straight back
+    into the log. The NYT key in particular is placed directly in the path
+    (see scrape_nyt), so any failed call would otherwise log it in clear text.
+
+    :param text: Arbitrary text, typically an exception message.
+    :return: The text with sensitive query values replaced by [redacted].
+    """
+    return _SENSITIVE_TEXT_RE.sub(lambda m: f"{m.group(1)}=[redacted]", text)
 
 
 class WebScrapingTechnician(CodedTool):
@@ -122,7 +145,9 @@ class WebScrapingTechnician(CodedTool):
                 paragraphs = [p.get_text() for p in article_body.find_all("p")]
             return " ".join(paragraphs).strip()
         except requests.exceptions.RequestException as e:
-            logger.warning("BeautifulSoup failed for %s (%s): %s", self.sanitize_url(url), source, str(e))
+            logger.warning(
+                "BeautifulSoup failed for %s (%s): %s", self.sanitize_url(url), source, sanitize_text(str(e))
+            )
             return ""
 
     @backoff.on_exception(
@@ -184,7 +209,7 @@ class WebScrapingTechnician(CodedTool):
             return content
 
         except (requests.exceptions.RequestException, ArticleException, ValueError) as e:
-            logger.debug("Newspaper3k failed for %s: %s", self.sanitize_url(url), str(e))
+            logger.debug("Newspaper3k failed for %s: %s", self.sanitize_url(url), sanitize_text(str(e)))
             return self.scrape_with_bs4(url, source)
 
     def scrape_nyt(self, keywords: list, save_dir: str = "nyt_articles_output") -> Dict[str, Any]:
@@ -216,7 +241,7 @@ class WebScrapingTechnician(CodedTool):
                         time.sleep(0.5)
                 time.sleep(6)
             except requests.exceptions.RequestException as e:
-                logger.error("Error in NYT section '%s': %s", section, e)
+                logger.error("Error in NYT section '%s': %s", section, sanitize_text(str(e)))
 
         filename = os.path.join(save_dir, "nyt_articles.txt")
         with open(filename, "w", encoding="utf-8") as f:
@@ -264,7 +289,7 @@ class WebScrapingTechnician(CodedTool):
                         all_articles.append(content.replace("\n", " "))
                     time.sleep(0.5)
             except requests.exceptions.RequestException as e:
-                logger.error("Guardian error for keyword '%s': %s", keyword, e)
+                logger.error("Guardian error for keyword '%s': %s", keyword, sanitize_text(str(e)))
 
         filename = os.path.join(save_dir, "guardian_articles.txt")
         with open(filename, "w", encoding="utf-8") as f:
@@ -303,7 +328,7 @@ class WebScrapingTechnician(CodedTool):
                         all_articles.append(content.replace("\n", " "))
                     time.sleep(0.5)
             except requests.exceptions.RequestException as e:
-                logger.error("Al Jazeera feed '%s' error: %s", feed_name, e)
+                logger.error("Al Jazeera feed '%s' error: %s", feed_name, sanitize_text(str(e)))
 
         filename = os.path.join(save_dir, "aljazeera_articles.txt")
         with open(filename, "w", encoding="utf-8") as f:
