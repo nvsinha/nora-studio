@@ -123,7 +123,18 @@ class WebScrapingTechnician(CodedTool):
                 )
             )
         except (ValueError, TypeError):
-            return url
+            # Never fall back to the raw URL.
+            #
+            # Reaching here means urlparse could not make sense of the string,
+            # and a malformed port is enough to get here -- `.port` raises on
+            # "host:notaport" while the same URL happily carries
+            # "user:password@" and an api-key in its query. Returning it
+            # verbatim handed the caller exactly what this function exists to
+            # remove, and every caller passes the result straight to a log.
+            #
+            # The exception text logged alongside this already carries the
+            # context, so a placeholder costs little.
+            return "[unparseable url]"
 
     def scrape_with_bs4(self, url: str, source: str = "generic") -> str:
         """

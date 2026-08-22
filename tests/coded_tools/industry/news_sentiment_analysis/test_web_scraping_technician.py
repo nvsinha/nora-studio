@@ -61,6 +61,7 @@ _install_stubs()
 
 # pylint: disable=wrong-import-position
 from coded_tools.industry.news_sentiment_analysis.web_scraping_technician import SENSITIVE_QUERY_KEYS  # noqa: E402
+from coded_tools.industry.news_sentiment_analysis.web_scraping_technician import WebScrapingTechnician  # noqa: E402
 from coded_tools.industry.news_sentiment_analysis.web_scraping_technician import sanitize_text  # noqa: E402
 
 # pylint: enable=wrong-import-position
@@ -123,3 +124,43 @@ class TestSanitizeText(TestCase):
         """A message with nothing sensitive passes through untouched."""
         msg = "Connection reset by peer for https://x.test/a?q=climate"
         self.assertEqual(sanitize_text(msg), msg)
+
+
+class TestSanitizeUrl(TestCase):
+    """Unit tests for WebScrapingTechnician.sanitize_url."""
+
+    def setUp(self):
+        self.tool = WebScrapingTechnician()
+
+    def test_credentials_and_key_are_stripped(self):
+        """Userinfo is dropped and sensitive query values are redacted."""
+        out = self.tool.sanitize_url("https://alice:hunter2@example.com:8443/feed?api-key=SEKRET&q=climate")
+        self.assertNotIn("alice", out)
+        self.assertNotIn("hunter2", out)
+        self.assertNotIn("SEKRET", out)
+        self.assertIn("example.com:8443", out)
+        # Non-sensitive parameters are what make the log line useful.
+        self.assertIn("q=climate", out)
+
+    def test_unparseable_url_does_not_fall_back_to_the_original(self):
+        """
+        A URL that cannot be parsed is replaced, not returned verbatim.
+
+        `.port` raises ValueError on a malformed port, and the old fallback
+        returned the input unchanged -- so the one shape of URL that broke the
+        parser was also the one logged with its credentials intact. This is
+        the case CodeQL flagged as py/clear-text-logging-sensitive-data.
+        """
+        out = self.tool.sanitize_url("https://alice:hunter2@example.com:notaport/feed?api-key=SEKRET")
+        self.assertNotIn("hunter2", out)
+        self.assertNotIn("SEKRET", out)
+        self.assertNotIn("alice", out)
+        self.assertEqual(out, "[unparseable url]")
+
+    def test_ordinary_url_is_left_intact(self):
+        """A URL with nothing sensitive keeps its host, path and parameters."""
+        out = self.tool.sanitize_url("https://example.com/a/b?q=climate&page=2")
+        self.assertIn("example.com", out)
+        self.assertIn("/a/b", out)
+        self.assertIn("q=climate", out)
+        self.assertIn("page=2", out)
