@@ -64,7 +64,9 @@ Nora Fleet enables multiple large language model (LLM)-powered agents to collabo
 delegating subtasks through adaptive inter-agent communication protocols. This approach addresses the limitations inherent
 to single-agent systems, where no single model has all the expertise or context necessary for multifaceted problems.
 
-<!-- TODO: walkthrough videos recorded against the new UI -->
+<!-- TODO: the walkthrough videos still show the pre-rename UI, so they were
+     dropped rather than left to mislead. Re-recording them needs a screen
+     capture of a live session, which is a manual step. -->
 ---
 
 ### ✨ Key Features
@@ -164,11 +166,14 @@ And many more: check out [docs/examples.md](docs/examples.md).
 
 ## High level Architecture
 
-<!-- pyml disable no-inline-html -->
-<p align="left">
-  <!-- TODO: architecture diagram regenerated in the docs pass -->
-</p>
-<!-- pyml enable no-inline-html -->
+![Nora architecture: the web UI calls the orchestration server, which loads this repository's agent networks][arch]
+
+[arch]: https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/architecture.png
+
+<!-- Source for the diagram above: docs/images/architecture.svg. Edit the SVG,
+     then re-export the PNG -- the README is also the PyPI long description,
+     and raw.githubusercontent serves .svg as text/plain, so the PNG is what
+     actually renders. -->
 
 ---
 
@@ -314,7 +319,9 @@ Screenshot:
 Use the Agent Network Designer to create your own agent network.
 
 1. From the `nora_flow` UI, click the `NEW` button at the top, center of the screen.
-   <!-- TODO: screenshot regenerated against the restyled UI -->
+
+   ![The NEW button in the Nora Flow header](https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/agent_network_designer_new_button.png)
+
 2. In the new window that opens, type your prompts in the text box in the bottom right
 corner of the screen. Then Agent Network Designer:
    * Creates the agents

@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1040" height="756" viewBox="0 0 1040 756" role="img"
+     aria-label="Nora high level architecture: the nora-flow web UI talks to its FastAPI backend, which talks to the nora-fleet orchestration server on port 8080; nora-fleet loads agent networks defined by nora-studio, which call out to LLM providers and external tools. nora-common provides shared utilities to nora-fleet and nora-studio.">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6f6e7a"/>
+    </marker>
+    <style>
+      .t   { font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+      .m   { font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace; }
+      .ttl { font-size: 20px; font-weight: 650; fill: #f3f3f5; }
+      .sub { font-size: 13px; fill: #9a99a4; }
+      .box { font-size: 16px; font-weight: 620; fill: #f3f3f5; }
+      .dsc { font-size: 12.5px; fill: #a8a7b2; }
+      .lbl { font-size: 12px; fill: #8d8c98; }
+      .rail{ font-size: 14px; font-weight: 620; fill: #f3f3f5; }
+    </style>
+  </defs>
+
+  <rect x="0" y="0" width="1040" height="756" rx="14" fill="#131218"/>
+
+  <text class="t ttl" x="40" y="46">Nora — high level architecture</text>
+  <text class="t sub" x="40" y="70">Each box is a separate repository. Arrows show the direction of calls.</text>
+
+  <!-- 1. web UI -->
+  <rect x="40" y="100" width="740" height="104" rx="10" fill="#1e1d24" stroke="#34333d"/>
+  <rect x="40" y="100" width="4" height="104" rx="2" fill="#6d8bb8"/>
+  <text class="m box" x="64" y="132">nora-flow<tspan class="t dsc"> · web UI</tspan></text>
+  <text class="t dsc" x="64" y="157">React 19 · Astryx stone theme · runs in the browser</text>
+  <text class="t dsc" x="64" y="180">Network graph · Chat · CRUSE · Agent Network Designer</text>
+
+  <path d="M 410 204 L 410 244" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="t lbl" x="424" y="229">HTTP · WebSocket</text>
+
+  <!-- 2. backend -->
+  <rect x="40" y="244" width="740" height="76" rx="10" fill="#1e1d24" stroke="#34333d"/>
+  <rect x="40" y="244" width="4" height="76" rx="2" fill="#6d8bb8"/>
+  <text class="m box" x="64" y="276">nora-flow<tspan class="t dsc"> · backend</tspan></text>
+  <text class="t dsc" x="64" y="299">FastAPI · REST and WebSocket · serves the built frontend</text>
+
+  <path d="M 410 320 L 410 360" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="t lbl" x="424" y="345">HTTP · gRPC · MCP  —  port 8080</text>
+
+  <!-- 3. fleet -->
+  <rect x="40" y="360" width="740" height="104" rx="10" fill="#1e1d24" stroke="#34333d"/>
+  <rect x="40" y="360" width="4" height="104" rx="2" fill="#4e8f80"/>
+  <text class="m box" x="64" y="392">nora-fleet</text>
+  <text class="t dsc" x="64" y="417">The agent orchestration server: the framework everything else runs on</text>
+  <text class="t dsc" x="64" y="440">Sessions · agent lifecycle · streamed messages · sly_data</text>
+
+  <path d="M 410 464 L 410 504" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="t lbl" x="424" y="489">loads agent networks from the manifest</text>
+
+  <!-- 4. studio -->
+  <rect x="40" y="504" width="740" height="104" rx="10" fill="#1e1d24" stroke="#34333d"/>
+  <rect x="40" y="504" width="4" height="104" rx="2" fill="#8579b5"/>
+  <text class="m box" x="64" y="536">nora-studio<tspan class="t dsc"> · this repository</tspan></text>
+  <text class="t dsc" x="64" y="561">Agent networks declared in HOCON, plus the Python they call</text>
+  <text class="m dsc" x="64" y="584">registries/*.hocon · coded_tools/*.py · middleware/ · skills/</text>
+
+  <path d="M 410 608 L 410 648" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text class="t lbl" x="424" y="633">model and tool calls</text>
+
+  <!-- 5. externals -->
+  <rect x="40" y="648" width="356" height="76" rx="10" fill="#1a191f" stroke="#34333d" stroke-dasharray="4 3"/>
+  <text class="t box" x="64" y="680">LLM providers</text>
+  <text class="t dsc" x="64" y="703">Anthropic · OpenAI · Gemini · Ollama · others</text>
+
+  <rect x="424" y="648" width="356" height="76" rx="10" fill="#1a191f" stroke="#34333d" stroke-dasharray="4 3"/>
+  <text class="t box" x="448" y="680">External tools and APIs</text>
+  <text class="t dsc" x="448" y="703">Search · databases · MCP servers · your own code</text>
+
+  <!-- right rail: nora-common -->
+  <rect x="812" y="360" width="188" height="248" rx="10" fill="#1e1d24" stroke="#34333d"/>
+  <rect x="812" y="360" width="4" height="248" rx="2" fill="#c9a961"/>
+  <text class="m rail" x="836" y="392">nora-common</text>
+  <text class="t dsc" x="836" y="416">Shared utilities the</text>
+  <text class="t dsc" x="836" y="435">server and the agent</text>
+  <text class="t dsc" x="836" y="454">networks both build on</text>
+  <text class="t dsc" x="836" y="486">Config loading, file</text>
+  <text class="t dsc" x="836" y="505">and time helpers,</text>
+  <text class="t dsc" x="836" y="524">serialization</text>
+
+  <path d="M 780 412 L 812 412" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <path d="M 780 556 L 812 556" stroke="#6f6e7a" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>

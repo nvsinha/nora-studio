@@ -104,7 +104,7 @@ Pass `sly_data` with your message to override the current time in the Time tool.
 
 In the NoraFlow UI, you can pass `sly_data` using the `sly_data` field under the `Message` field:
 
-<!-- TODO: screenshot regenerated against the restyled UI -->
+![The SlyData tab of the Nora Flow UI, holding {"time": "1 am"}](../../images/slydata_field.png)
 Let's see if the `Time` tool picks it up:
 
 ```text

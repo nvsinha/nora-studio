@@ -42,10 +42,15 @@ session information is stored and retrieved from the sly_data too.
 
 ## Examples
 
-CRUSE automatically generates a form:
-<!-- TODO: screenshot regenerated against the restyled UI -->
-The user only submits the form with no chat:
-<!-- TODO: screenshot regenerated against the restyled UI -->
-Some other examples:
-<!-- TODO: screenshot regenerated against the restyled UI -->
-<!-- TODO: screenshot regenerated against the restyled UI -->
+The CRUSE interface, with an agent network selected. The backdrop is generated
+per agent network, so it differs from one network to the next:
+
+![The CRUSE interface: thread list on the left, chat and sample queries on the right, over a generated backdrop](../../images/cruse_interface.png)
+
+From here CRUSE builds a form from the agent's inputs, and the user can submit
+that form without typing anything into the chat at all.
+
+<!-- TODO: the generated-form captures -- the form itself, a form-only
+     submission, and two further examples -- still need to be taken from a
+     session with an LLM key configured. They cannot be produced without one,
+     so they were left out rather than staged. -->
