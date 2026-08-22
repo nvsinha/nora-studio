@@ -1630,7 +1630,6 @@ name: internal-comms
 description: Helps write internal communications such as newsletters and FAQs.
 allowed-tools: web_search
 compatibility: general
-license: Apache-2.0
 ---
 
 # Internal Communications Skill

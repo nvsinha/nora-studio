@@ -23,14 +23,6 @@
         "tools": ["WolframContext", "WolframLanguageEvaluator", "WolframAlpha"]
     },
 
-    # DeepWiki MCP — AI-powered Q&A and documentation access for public GitHub repositories.
-    # Useful for exploring open-source projects without cloning or reading source by hand.
-    # Free, no authentication required. Private repos require Devin's paid tier.
-    # Docs: https://docs.devin.ai/work-with-devin/deepwiki-mcp
-    "https://mcp.deepwiki.com/mcp": {
-        "tools": ["read_wiki_structure", "ask_question"]
-    },
-
     # You.com MCP — free tier (anonymous, no API key required).
     # Exposes only the `you-search` tool. The full toolset (you-search, you-contents,
     # you-research) requires the authenticated/paid tier — see the commented section below.

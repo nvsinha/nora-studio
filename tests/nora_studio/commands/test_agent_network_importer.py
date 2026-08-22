@@ -459,16 +459,16 @@ class TestMcpInfoMerge:
             (source_dir / "registries" / shared).write_text("")
         (source_dir / "mcp").mkdir()
         (source_dir / "mcp" / "mcp_info.hocon").write_text(
-            '{\n    "https://mcp.deepwiki.com/mcp": {\n        "tools": ["read_wiki_structure"]\n    }\n}\n'
+            '{\n    "https://mcp.example.com/mcp": {\n        "tools": ["search"]\n    }\n}\n'
         )
 
         importer = AgentNetworkImporter(str(source_dir), str(target_dir))
-        deps = AgentNetworkDependencies(mcp_tools=["https://mcp.deepwiki.com/mcp"])
+        deps = AgentNetworkDependencies(mcp_tools=["https://mcp.example.com/mcp"])
         result = importer.import_network("basic/mcp_user.hocon", deps)
 
         merged = (target_dir / "mcp" / "mcp_info.hocon").read_text()
-        assert "https://mcp.deepwiki.com/mcp" in merged
-        assert "https://mcp.deepwiki.com/mcp" in result.mcp_added
+        assert "https://mcp.example.com/mcp" in merged
+        assert "https://mcp.example.com/mcp" in result.mcp_added
 
     def test_zip_import_merges_mcp_info_additively(self, tmp_path: Path) -> None:
         """A zip-bundled mcp_info.hocon is merged into the receiver — never replacing existing URLs."""

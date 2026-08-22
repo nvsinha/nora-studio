@@ -284,14 +284,14 @@ class TestExportWithDeps:
         (registries / "mcp_user.hocon").write_text(
             "{\n"
             '    "tools": [\n'
-            '        { "name": "frontman", "class": "openai", "tools": ["https://mcp.deepwiki.com/mcp"] }\n'
+            '        { "name": "frontman", "class": "openai", "tools": ["https://mcp.example.com/mcp"] }\n'
             "    ]\n"
             "}\n"
         )
         (project_dir / "mcp").mkdir()
         (project_dir / "mcp" / "mcp_info.hocon").write_text(
             "{\n"
-            '    "https://mcp.deepwiki.com/mcp": {\n'
+            '    "https://mcp.example.com/mcp": {\n'
             '        "tools": ["read_wiki_structure", "ask_question"]\n'
             "    }\n"
             "}\n"
@@ -305,9 +305,9 @@ class TestExportWithDeps:
             names = set(zf.namelist())
             mcp_payload = zf.read("mcp/mcp_info.hocon").decode("utf-8")
         assert "mcp/mcp_info.hocon" in names
-        assert "https://mcp.deepwiki.com/mcp" in mcp_payload
-        assert result.bundled_mcp_urls == ["https://mcp.deepwiki.com/mcp"]
-        assert "https://mcp.deepwiki.com/mcp" in result.dependencies.mcp_tools
+        assert "https://mcp.example.com/mcp" in mcp_payload
+        assert result.bundled_mcp_urls == ["https://mcp.example.com/mcp"]
+        assert "https://mcp.example.com/mcp" in result.dependencies.mcp_tools
 
     def test_export_with_only_mcp_dep_produces_zip(self, tmp_path: Path) -> None:
         """An MCP-only network still exports as .zip so we can ship the filtered mcp_info."""
@@ -318,13 +318,13 @@ class TestExportWithDeps:
         (registries / "mcp_only.hocon").write_text(
             "{\n"
             '    "tools": [\n'
-            '        { "name": "frontman", "class": "openai", "tools": ["https://mcp.deepwiki.com/mcp"] }\n'
+            '        { "name": "frontman", "class": "openai", "tools": ["https://mcp.example.com/mcp"] }\n'
             "    ]\n"
             "}\n"
         )
         (project_dir / "mcp").mkdir()
         (project_dir / "mcp" / "mcp_info.hocon").write_text(
-            '{\n    "https://mcp.deepwiki.com/mcp": { "tools": ["x"] }\n}\n'
+            '{\n    "https://mcp.example.com/mcp": { "tools": ["x"] }\n}\n'
         )
 
         exporter = AgentNetworkExporter(project_dir=str(project_dir))
