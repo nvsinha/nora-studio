@@ -1,3 +1,9 @@
+<!-- pyml disable no-inline-html,first-line-heading -->
+<img src="https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/logo.svg"
+     alt="" width="72" height="72" />
+
+<!-- pyml enable no-inline-html,first-line-heading -->
+
 # Nora Studio
 
 **Author, run, and evaluate declarative agent networks.**
@@ -168,12 +174,9 @@ And many more: check out [docs/examples.md](docs/examples.md).
 
 ![Nora architecture: the web UI calls the orchestration server, which loads this repository's agent networks][arch]
 
-[arch]: https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/architecture.png
+[arch]: https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/architecture.svg
 
-<!-- Source for the diagram above: docs/images/architecture.svg. Edit the SVG,
-     then re-export the PNG -- the README is also the PyPI long description,
-     and raw.githubusercontent serves .svg as text/plain, so the PNG is what
-     actually renders. -->
+<!-- Edit docs/images/architecture.svg; it is what this renders. -->
 
 ---
 
