@@ -2,7 +2,8 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability, please report it by emailing .
+If you discover a security vulnerability, please report it privately using
+[GitHub's private vulnerability reporting](https://github.com/nvsinha/nora-studio/security/advisories/new).
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 

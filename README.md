@@ -35,9 +35,6 @@ configuration rather than code.
   <img src="https://img.shields.io/github/last-commit/nvsinha/nora-studio" alt="Last Commit">
   <img src="https://img.shields.io/github/issues/nvsinha/nora-studio" alt="Issues">
   <img src="https://img.shields.io/github/issues-pr/nvsinha/nora-studio" alt="Pull Requests">
-  <a href="https://deepwiki.com/nvsinha/nora-studio">
-  <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki: Nora Studio" /></a>
-
 </p>
 
 <!-- pyml disable-next-line no-inline-html -->
@@ -47,8 +44,6 @@ configuration rather than code.
   <a href="https://github.com/nvsinha/nora-fleet"><img alt="GitHub Repo"
   src="https://img.shields.io/badge/GitHub-Repo-green.svg" /></a>
   <img src="https://img.shields.io/github/commit-activity/m/nvsinha/nora-fleet" alt="commit activity">
-  <a href="https://deepwiki.com/nvsinha/nora-fleet">
-  <img src="https://deepwiki.com/badge.svg" alt="Ask DeepWiki: Nora Fleet" /></a>
 </p>
 
 ## What is Nora Fleet?

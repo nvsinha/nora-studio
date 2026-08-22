@@ -50,14 +50,12 @@ Please use our issue templates:
 For questions specific to the core Nora Fleet library:
 
 - **GitHub**: [nora-fleet](https://github.com/nvsinha/nora-fleet)
-- **PyPI**: [nora-fleet](https://pypi.org/project/nora-fleet/)
-- **DeepWiki**: [Nora Fleet Library](https://deepwiki.com/nvsinha/nora-fleet)
 
 ## Commercial Support
 
 If you're interested in commercial enterprise support, or custom development:
 
-📧 **Email**: 
+Open a [discussion](https://github.com/nvsinha/nora-studio/discussions) and say what you need.
 
 Commercial support is available for:
 - Enterprise deployments
@@ -65,13 +63,14 @@ Commercial support is available for:
 - Integration with proprietary systems
 - Training and workshops
 
-**Note**: This project is licensed under the [Apache 2.0 License](LICENSE.txt)
+**Note**: This project is licensed under the [MIT License](LICENSE.txt)
 
 ## Security Issues
 
 **⚠️ Do not report security vulnerabilities through public GitHub Issues or Discussions.**
 
-For security vulnerabilities, please see our [Security Policy](SECURITY.md) and email: ****
+For security vulnerabilities, please see our [Security Policy](SECURITY.md) and report privately
+using [GitHub's private vulnerability reporting](https://github.com/nvsinha/nora-studio/security/advisories/new).
 
 ## Response Times
 

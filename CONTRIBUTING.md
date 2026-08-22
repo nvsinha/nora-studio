@@ -360,7 +360,7 @@ git rebase main
 
 ## License
 
-By contributing to Nora Studio, you agree that your contributions will be licensed under the project's [Apache 2.0 License](LICENSE.txt).
+By contributing to Nora Studio, you agree that your contributions will be licensed under the project's [MIT License](LICENSE.txt).
 
 ## Questions?
 
