@@ -3,7 +3,7 @@
 # and pinning tags keeps builds reproducible.
 nora-common @ git+https://github.com/nvsinha/nora-common@v0.1.0
 nora-fleet @ git+https://github.com/nvsinha/nora-fleet@v0.1.0
-nora-flow @ git+https://github.com/nvsinha/nora-flow@v0.2.0
+nora-flow @ git+https://github.com/nvsinha/nora-flow@v0.3.0
 
 # For config parsing
 pyhocon>=0.3.60
