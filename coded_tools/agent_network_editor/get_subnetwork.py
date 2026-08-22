@@ -424,7 +424,7 @@ class GetSubnetwork(BranchActivation, CodedTool):
             tasks.append(GetSubnetwork._fetch_description(name, factory, invocation_context))
 
         # gather() fires all calls in parallel. In http mode the server processes them
-        # on a single event loop so they effectively serialise behind it, but the work
+        # on a single event loop so they effectively serialize behind it, but the work
         # per call is small (~ms each) and gather amortises the await overhead.
         # return_exceptions=False is safe here because _fetch_description swallows its own errors.
         results: list[tuple[str, str]] = await asyncio.gather(*tasks)
@@ -475,7 +475,7 @@ class GetSubnetwork(BranchActivation, CodedTool):
             session = factory.create_session(name, invocation_context)
             if session is None:
                 # Factory couldn't resolve the URL — most likely a malformed name or a
-                # host the parser doesn't recognise. Skip rather than fail loudly.
+                # host the parser doesn't recognize. Skip rather than fail loudly.
                 return name, ""
             result = await session.function({})
         except Exception as exc:  # pylint: disable=broad-exception-caught

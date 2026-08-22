@@ -51,7 +51,7 @@ presenting the final answer.
 Human: Given a list of integers, find all pairs that sum to a target value.
 
 AI: [internally: creates checklist with steps — understand problem, identify edge cases,
-    choose data structure, design algorithm, analyse complexity, write solution,
+    choose data structure, design algorithm, analyze complexity, write solution,
     run via code_interpreter, fix if needed]
 
     [works through each step, marking in_progress → done]

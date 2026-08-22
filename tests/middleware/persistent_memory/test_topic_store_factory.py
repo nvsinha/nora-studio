@@ -29,7 +29,7 @@ class TopicStoreFactoryTests(MemoryTestBase):
         self.assertIsInstance(store, MarkdownFileStore)
 
     def test_unknown_backend_raises(self) -> None:
-        """An unrecognised backend name raises ``ValueError``."""
+        """An unrecognized backend name raises ``ValueError``."""
         with self.assertRaises(ValueError):
             TopicStoreFactory.create({"backend": "no_such_backend"})
 

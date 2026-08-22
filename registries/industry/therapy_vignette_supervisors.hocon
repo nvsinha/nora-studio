@@ -8,7 +8,7 @@
 {
     include "registries/expertise_scoping_instructions.hocon",
     "metadata": {
-        "description": "Multi-agent system that takes a therapy vignette and produces a treatment plan which is the result of consensus amongst a number of different therapy experts. The moderator agent coordinates with five therapy experts (EFT, DBT, CBT, ACT, and IFS) to develop a comprehensive treatment plan including diagnostic assessment, therapeutic goals, interventions, and ethical considerations.",
+        "description": "Multi-agent system that takes a therapy vignette and produces a treatment plan which is the result of consensus among a number of different therapy experts. The moderator agent coordinates with five therapy experts (EFT, DBT, CBT, ACT, and IFS) to develop a comprehensive treatment plan including diagnostic assessment, therapeutic goals, interventions, and ethical considerations.",
         "tags": ["therapy"],
         "sample_queries": [
             "Ali and Maryam are a married couple in their 40s experiencing relationship difficulties with frequent arguments, communication breakdowns, and lack of intimacy.",

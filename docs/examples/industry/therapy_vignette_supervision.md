@@ -1,7 +1,7 @@
 # Therapy Vignette Supervision
 
 The **Therapy Vignette Supervision** system is a multi-agent system that takes a therapy vignette and produces a
-treatment plan which is the result of consensus amongst a number of different therapy experts.
+treatment plan which is the result of consensus among a number of different therapy experts.
 
 ## File
 

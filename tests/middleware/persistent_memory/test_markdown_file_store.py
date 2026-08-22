@@ -5,7 +5,7 @@
 #
 # END COPYRIGHT
 
-"""Behaviour tests for ``MarkdownFileStore``."""
+"""Behavior tests for ``MarkdownFileStore``."""
 
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from tests.middleware.persistent_memory.base import MemoryTestBase
 
 
 class MarkdownFileStoreTests(MemoryTestBase):
-    """Behaviour tests for the markdown backend."""
+    """Behavior tests for the markdown backend."""
 
     def _make_store(self) -> MarkdownFileStore:
         """Build a store rooted in the scratch directory."""

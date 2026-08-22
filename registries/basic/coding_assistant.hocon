@@ -70,11 +70,11 @@ reasoning steps. Typical steps you might include (adapt to the problem):
   - Identify input/output types and edge cases
   - Choose data structure(s)
   - Design the algorithm (describe approach, e.g. two-pointer, BFS, DP)
-  - Analyse time and space complexity
+  - Analyze time and space complexity
   - Write the solution
   - Run solution with example inputs via code_interpreter
   - Fix any errors found and re-run
-  - Refine or optimise if needed
+  - Refine or optimize if needed
 
 **Step 2 — Work through your checklist.**
 For each item on your checklist:

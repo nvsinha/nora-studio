@@ -507,7 +507,7 @@ class ProcessLogBridge(ProcessLoggerInterface):
             - Otherwise, if the payload carries an explicit "message_type"
               field (e.g. "Error", "Debug"), its mapped level is returned.
               This recovers severity from JSON-ish records that failed strict
-              parsing and fell back to text, keeping behaviour consistent with
+              parsing and fell back to text, keeping behavior consistent with
               the parsed-JSON path.
             - If the full line looks like a traceback, ERROR is returned.
             - Otherwise, the provided default is used.

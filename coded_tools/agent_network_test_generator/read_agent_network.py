@@ -27,7 +27,7 @@ class ReadAgentNetwork(CodedTool):
         Extract relevant information from a single tool/agent definition.
 
         :param tool: A single tool definition dictionary from the network HOCON.
-        :return: A dictionary summarising the agent's key attributes.
+        :return: A dictionary summarizing the agent's key attributes.
         """
         # Start with the agent/tool name — the only required field.
         agent_info: dict[str, Any] = {

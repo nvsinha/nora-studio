@@ -230,7 +230,7 @@ Logs are written under `logs/` — `server.log`, `nora_flow.log` and `thinking_d
 
 ## Building a network with the Designer
 
-From the Nora Flow UI, click **NEW** at the top centre of the screen.
+From the Nora Flow UI, click **NEW** at the top center of the screen.
 
 ![The NEW button in the Nora Flow header](https://raw.githubusercontent.com/nvsinha/nora-studio/main/docs/images/agent_network_designer_new_button.png)
 
@@ -246,7 +246,7 @@ Network Designer will:
 When it replies in the chat window, you can keep going — ask for changes and it will revise
 the design.
 
-Once it looks right, test it: the blue **Launch** button at the top centre opens a window
+Once it looks right, test it: the blue **Launch** button at the top center opens a window
 where you can chat with the network. If something needs changing, return to the editor window
 and ask. Any network can also be edited directly by clicking the pen icon beside its name in
 the main window.

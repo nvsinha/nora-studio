@@ -2,7 +2,7 @@
 
 Four products, one system. Each mark is a node graph whose *topology* says what
 that product does to a network — so they read as a family without being four
-recolours of the same shape.
+recolors of the same shape.
 
 <!-- pyml disable no-inline-html,line-length -->
 | | product | topology | says |
@@ -35,8 +35,8 @@ light/dark pair to keep in sync.
 
 ## Two variants
 
-**`logo.svg` — the mark.** Single colour, transparent ground. Use at 32px and
-up: READMEs, docs, slides. Single colour rather than accent-plus-grey, because
+**`logo.svg` — the mark.** Single color, transparent ground. Use at 32px and
+up: READMEs, docs, slides. Single color rather than accent-plus-gray, because
 a two-tone mark reads as unfinished and does not survive being printed,
 inverted, or dropped on an unknown background.
 

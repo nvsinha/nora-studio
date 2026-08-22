@@ -16,7 +16,7 @@ It contains:
 ## Example conversation
 
 ```text
-Human: I am travelling to a new planet and wish to send greetings to the orb.
+Human: I am traveling to a new planet and wish to send greetings to the orb.
 AI: Hello, world.
 ```
 

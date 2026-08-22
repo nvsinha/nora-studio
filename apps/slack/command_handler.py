@@ -26,7 +26,7 @@ class CommandHandler:
         """
         List available networks.
 
-        :param ack: Slack acknowledgement function
+        :param ack: Slack acknowledgment function
         :param respond: Slack respond function to send response
         :param logger: Logger instance for logging information
         """
@@ -62,7 +62,7 @@ class CommandHandler:
     def nora_fleet_help(self, ack: Ack, respond: Any) -> None:
         """
         Provide usage instructions.
-        :param ack: Slack acknowledgement function
+        :param ack: Slack acknowledgment function
         :param respond: Slack respond function to send response
         """
         ack()

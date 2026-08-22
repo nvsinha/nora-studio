@@ -14,7 +14,7 @@ from nora_fleet.interfaces.coded_tool import CodedTool
 
 from coded_tools.agent_network_editor.and_logger import AndLogger
 
-# The complete set of stock tests recognised by the nora-fleet test runner.
+# The complete set of stock tests recognized by the nora-fleet test runner.
 _VALID_STOCK_TESTS: frozenset[str] = frozenset(
     {
         "keywords",
@@ -324,7 +324,7 @@ class ValidateTestFixture(CodedTool):
         errors: list[str],
     ) -> None:
         """
-        Ensure every key in *block* is a recognised stock test.
+        Ensure every key in *block* is a recognized stock test.
 
         :param block: Dictionary of stock test entries to validate.
         :param path: Human-readable path prefix for error messages.

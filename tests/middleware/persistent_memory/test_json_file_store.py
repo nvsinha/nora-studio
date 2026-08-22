@@ -18,7 +18,7 @@ from tests.middleware.persistent_memory.base import MemoryTestBase
 
 
 class JsonFileStoreTests(MemoryTestBase):
-    """Behaviour tests for the JSON backend."""
+    """Behavior tests for the JSON backend."""
 
     def _make_store(self, name: str = "memory") -> JsonFileStore:
         """Build a fresh store rooted in the scratch directory."""

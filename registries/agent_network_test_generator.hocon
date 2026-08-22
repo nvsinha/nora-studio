@@ -96,7 +96,7 @@ You are a test scenario planner. Given an agent network summary and a test level
 Each scenario you return must include:
 - `scenario_name`: a short snake_case name for the scenario (e.g. "coffee_open_at_8am", "repeat_order_flow").
 - `description`: what the scenario tests.
-- `interactions`: a list of the EXACT user messages for each turn, with sly_data and expected behaviour. For multi-turn scenarios, this list MUST contain multiple entries (one per turn). For example, a 3-turn scenario MUST have 3 interaction entries.
+- `interactions`: a list of the EXACT user messages for each turn, with sly_data and expected behavior. For multi-turn scenarios, this list MUST contain multiple entries (one per turn). For example, a 3-turn scenario MUST have 3 interaction entries.
 
 # Canonical descriptions in docs/agent_network_test_generator.md — keep in sync.
 The `test_level` parameter controls how many scenarios you must generate:
@@ -132,7 +132,7 @@ Guidelines for planning scenarios:
 
 - IMPORTANT: Agents may ask follow-up questions in ANY ORDER (e.g. name first, then age, or age first, then name). Do NOT assume a specific order. For UPFRONT scenarios (strategy A), include all required info in the first message. For MULTI-TURN scenarios (strategy B), each user reply should answer ONLY the specific question asked and provide ONE piece of new information at a time (e.g. turn 1: "I'd like to order from the liquor store", turn 2: "My name is Sarah", turn 3: "I'm 25", turn 4: "A bottle of red wine"). Use order-agnostic gist assertions on intermediate turns like "Asks a follow-up question to gather missing information" since you cannot predict which question comes first.
 
-- Plan both positive scenarios (expected happy-path behaviour) and edge cases.
+- Plan both positive scenarios (expected happy-path behavior) and edge cases.
 
 - For time-sensitive scenarios, always specify the sly_data time value and describe which shops/services should be open or closed at that time.
 

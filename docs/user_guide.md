@@ -1672,7 +1672,7 @@ containing a `SKILL.md` file. You can mix local and remote sources in the same l
 - `keep_skill_in_context` argument controls whether full skill content stays in the conversation
 history after being loaded:
 
-    | Value | Behaviour | Best for |
+    | Value | Behavior | Best for |
     |-------|-----------|----------|
     | `false` (default) | Skill content removed from chat history after use; agent may re-load if needed | Most use cases; token-constrained environments |
     | `true` | Skill content stays in chat history; agent can reference multiple skills simultaneously | Complex tasks requiring cross-skill synthesis |
